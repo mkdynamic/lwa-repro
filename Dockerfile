@@ -1,6 +1,8 @@
 FROM ruby:3.3.3-alpine
 COPY --from=public.ecr.aws/awsguru/aws-lambda-adapter:0.8.4 /lambda-adapter /opt/extensions/lambda-adapter
 ENV RUST_LOG="debug"
+ENV RUST_BACKTRACE="full"
+ENV PORT="8080"
 WORKDIR /app
 COPY . .
 RUN gem install bundler
